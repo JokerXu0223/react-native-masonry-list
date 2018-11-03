@@ -98,6 +98,7 @@ export default class MasonryList extends React.Component<Props, State> {
   static defaultProps = {
     scrollEventThrottle: 50,
     numColumns: 1,
+    refreshConfig: {},
     renderScrollComponent: (props: Props) => {
       if (props.onRefresh && props.refreshing != null) {
         return (
@@ -105,11 +106,9 @@ export default class MasonryList extends React.Component<Props, State> {
             {...props}
             refreshControl={
               <RefreshControl
+                {...props.refreshConfig}
                 refreshing={props.refreshing}
                 onRefresh={props.onRefresh}
-                tintColor="gray"
-                colors={['#ff0000', '#00ff00', '#0000ff']}
-                progressBackgroundColor="gray"
               />
             }
           />
