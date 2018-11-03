@@ -107,6 +107,9 @@ export default class MasonryList extends React.Component<Props, State> {
               <RefreshControl
                 refreshing={props.refreshing}
                 onRefresh={props.onRefresh}
+                tintColor="gray"
+                colors={['#ff0000', '#00ff00', '#0000ff']}
+                progressBackgroundColor="gray"
               />
             }
           />
@@ -114,6 +117,7 @@ export default class MasonryList extends React.Component<Props, State> {
       }
       return <ScrollView {...props} />;
     },
+    containerStyle: {},
   };
 
   state = _stateFromProps(this.props);
@@ -221,6 +225,8 @@ export default class MasonryList extends React.Component<Props, State> {
       ListEmptyComponent,
       keyExtractor,
       onEndReached,
+      ListFooterComponent,
+      containerStyle,
       ...props
     } = this.props;
     let headerElement;
@@ -233,26 +239,29 @@ export default class MasonryList extends React.Component<Props, State> {
     }
 
     const content = (
-      <View style={styles.contentContainer}>
-        {this.state.columns.map(col =>
-          <VirtualizedList
-            {...props}
-            ref={ref => (this._listRefs[col.index] = ref)}
-            key={`$col_${col.index}`}
-            data={col.data}
-            getItemCount={this._getItemCount}
-            getItem={this._getItem}
-            getItemLayout={(data, index) =>
-              this._getItemLayout(col.index, index)}
-            renderItem={({ item, index }) =>
-              renderItem({ item, index, column: col.index })}
-            renderScrollComponent={this._renderScrollComponent}
-            keyExtractor={keyExtractor}
-            onEndReached={onEndReached}
-            onEndReachedThreshold={this.props.onEndReachedThreshold}
-            removeClippedSubviews={false}
-          />,
-        )}
+      <View style={containerStyle}>
+        <View style={styles.contentContainer}>
+          {this.state.columns.map(col =>
+            <VirtualizedList
+              {...props}
+              ref={ref => (this._listRefs[col.index] = ref)}
+              key={`$col_${col.index}`}
+              data={col.data}
+              getItemCount={this._getItemCount}
+              getItem={this._getItem}
+              getItemLayout={(data, index) =>
+                this._getItemLayout(col.index, index)}
+              renderItem={({ item, index }) =>
+                renderItem({ item, index, column: col.index })}
+              renderScrollComponent={this._renderScrollComponent}
+              keyExtractor={keyExtractor}
+              onEndReached={onEndReached}
+              onEndReachedThreshold={this.props.onEndReachedThreshold}
+              removeClippedSubviews={false}
+            />,
+          )}
+        </View>
+        {ListFooterComponent}
       </View>
     );
 
