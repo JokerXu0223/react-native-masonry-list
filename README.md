@@ -10,9 +10,13 @@ able to provide the dimensions.
 
 ![](blob:http://imgur.com/c9ff3a44-7991-417b-8214-2b68aa8335e5)
 
+## Start
+
+>> forked from AppAndFlow/react-native-masonry-list(https://github.com/AppAndFlow/react-native-masonry-list)
+ 
 ## Installation
 
-`yarn add @appandflow/masonry-list`
+`yarn add http://gitlab.novata.net:10080/justin/react-native-masonry-list.git`
 
 ## Usage
 
@@ -33,6 +37,14 @@ The number of columns.
 #### `renderItem: ({ item: any, index: number, column: number }) => ?ReactElement<*>,`
 
 Same as `renderItem` from `FlatList` but also gets passed the column index.
+
+#### `ListFooterComponent: ReactElement<*>`
+
+Same as `ListFooterComponent` from `FlatList`.
+
+#### `refreshConfig: Object`
+
+Same as `refreshConfig` from `RefreshControl config`.
 
 ## Example
 
