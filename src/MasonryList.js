@@ -264,6 +264,8 @@ export default class MasonryList extends React.Component<Props, State> {
       </View>
     );
 
+    const noDate = emptyElement && this.props.data.length === 0;
+
     const scrollComponent = React.cloneElement(
       this.props.renderScrollComponent(this.props),
       {
@@ -275,9 +277,12 @@ export default class MasonryList extends React.Component<Props, State> {
         onScrollBeginDrag: this._onScrollBeginDrag,
         onScrollEndDrag: this._onScrollEndDrag,
         onMomentumScrollEnd: this._onMomentumScrollEnd,
+        contentContainerStyle: {
+          flex: noDate ? 1 : 0,
+        },
       },
       headerElement,
-      emptyElement && this.props.data.length === 0 ? emptyElement : content,
+      noDate ? emptyElement : content,
     );
 
     return scrollComponent;
