@@ -16,7 +16,7 @@ able to provide the dimensions.
  
 ## Installation
 
-`yarn add http://gitlab.novata.net:10080/justin/react-native-masonry-list.git`
+`yarn add js-masonry-list`
 
 ## Usage
 
