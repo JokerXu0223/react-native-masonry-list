@@ -3,7 +3,7 @@
 import Expo from 'expo';
 import React, { Component, PureComponent } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import MasonryList from '@appandflow/masonry-list';
+import MasonryList from 'js-masonry-list';
 
 const COLORS = ['green', 'blue', 'red'];
 const DATA = Array.from({ length: 50000 }).map((_, i) => ({

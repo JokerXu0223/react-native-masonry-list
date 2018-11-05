@@ -20,7 +20,7 @@ able to provide the dimensions.
 
 ## Usage
 
-`import MasonryList from '@appandflow/masonry-list';`
+`import MasonryList from 'js-masonry-list';`
 
 ## Props
 
