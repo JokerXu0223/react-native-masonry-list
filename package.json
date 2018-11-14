@@ -1,6 +1,6 @@
 {
   "name": "js-masonry-list",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "main": "./src/MasonryList.js",
   "private": false,
   "repository": {
