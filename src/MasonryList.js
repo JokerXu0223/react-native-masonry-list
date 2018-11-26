@@ -84,7 +84,10 @@ type State = {
 // This will get cloned and added a bunch of props that are supposed to be on
 // ScrollView so we wan't to make sure we don't pass them over (especially
 // onLayout since it exists on both).
-class FakeScrollView extends React.Component<{ style?: any, children?: any }> {
+class FakeScrollView extends React.PureComponent<{
+  style?: any,
+  children?: any,
+}> {
   render() {
     return (
       <View style={this.props.style}>
@@ -94,7 +97,7 @@ class FakeScrollView extends React.Component<{ style?: any, children?: any }> {
   }
 }
 
-export default class MasonryList extends React.Component<Props, State> {
+export default class MasonryList extends React.PureComponent<Props, State> {
   static defaultProps = {
     scrollEventThrottle: 50,
     numColumns: 1,
