@@ -34,9 +34,9 @@ Returns the height for a specific item. Note that this it *not* optional for now
 
 The number of columns.
 
-#### `renderItem: ({ item: any, index: number, column: number }) => ?ReactElement<*>,`
+#### `renderItem: ({ item: any, index: number, column: number, columnIndex: number }) => ?ReactElement<*>,`
 
-Same as `renderItem` from `FlatList` but also gets passed the column index.
+Same as `renderItem` from `FlatList` but also gets passed the column index. notice(columnIndex is index at old list)
 
 #### `ListFooterComponent: ReactElement<*>`
 
