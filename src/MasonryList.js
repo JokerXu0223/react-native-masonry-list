@@ -226,6 +226,7 @@ export default class MasonryList extends React.Component<Props, State> {
       onEndReached,
       ListFooterComponent,
       containerStyle,
+      numColumns,
       ...props
     } = this.props;
     let headerElement;
@@ -251,7 +252,12 @@ export default class MasonryList extends React.Component<Props, State> {
               getItemLayout={(data, index) =>
                 this._getItemLayout(col.index, index)}
               renderItem={({ item, index }) =>
-                renderItem({ item, index, column: col.index })}
+                renderItem({
+                  item,
+                  index,
+                  column: col.index,
+                  columnIndex: numColumns * index + col.index,
+                })}
               renderScrollComponent={this._renderScrollComponent}
               keyExtractor={keyExtractor}
               onEndReached={onEndReached}
