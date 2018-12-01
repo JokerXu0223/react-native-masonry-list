@@ -263,7 +263,10 @@ export default class MasonryList extends React.PureComponent<Props, State> {
                 })}
               renderScrollComponent={this._renderScrollComponent}
               keyExtractor={keyExtractor}
-              onEndReached={onEndReached}
+              onEndReached={() => {
+                if (!(numColumns === 1 || col.index === 0)) return;
+                onEndReached();
+              }}
               onEndReachedThreshold={this.props.onEndReachedThreshold}
               removeClippedSubviews={false}
             />,
