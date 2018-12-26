@@ -12,7 +12,7 @@ able to provide the dimensions.
 
 ## Start
 
->> forked from AppAndFlow/react-native-masonry-list(https://github.com/AppAndFlow/react-native-masonry-list)
+> forked from AppAndFlow/react-native-masonry-list(https://github.com/AppAndFlow/react-native-masonry-list)
  
 ## Installation
 
@@ -33,6 +33,10 @@ Returns the height for a specific item. Note that this it *not* optional for now
 #### `numColumns: number`
 
 The number of columns.
+
+#### `itemOffsetHeight: number`
+
+The number of itemOffsetHeight。You must ensure that itemHeight is the outermost container, for example, item has marginTop
 
 #### `renderItem: ({ item: any, index: number, column: number, columnIndex: number }) => ?ReactElement<*>,`
 

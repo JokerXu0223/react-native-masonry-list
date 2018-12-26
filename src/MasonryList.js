@@ -17,7 +17,12 @@ type Column = {
   heights: Array<number>,
 };
 
-const _stateFromProps = ({ numColumns, data, getHeightForItem }) => {
+const _stateFromProps = ({
+  numColumns,
+  data,
+  getHeightForItem,
+  itemOffsetHeight,
+}) => {
   const columns: Array<Column> = Array.from({
     length: numColumns,
   }).map((col, i) => ({
@@ -28,7 +33,7 @@ const _stateFromProps = ({ numColumns, data, getHeightForItem }) => {
   }));
 
   data.forEach((item, index) => {
-    const height = getHeightForItem({ item, index });
+    const height = getHeightForItem({ item, index }) + itemOffsetHeight;
     const column = columns.reduce(
       (prev, cur) => (cur.totalHeight < prev.totalHeight ? cur : prev),
       columns[0],
@@ -48,6 +53,7 @@ export type Props = {
     any,
   >,
   getHeightForItem: ({ item: any, index: number }) => number,
+  itemOffsetHeight?: number,
   ListHeaderComponent?: ?React.ComponentType<any>,
   ListEmptyComponent?: ?React.ComponentType<any>,
   /**
@@ -101,6 +107,7 @@ export default class MasonryList extends React.PureComponent<Props, State> {
   static defaultProps = {
     scrollEventThrottle: 50,
     numColumns: 1,
+    itemOffsetHeight: 0,
     refreshConfig: {},
     renderScrollComponent: (props: Props) => {
       if (props.onRefresh && props.refreshing != null) {
@@ -268,7 +275,6 @@ export default class MasonryList extends React.PureComponent<Props, State> {
                 onEndReached();
               }}
               onEndReachedThreshold={this.props.onEndReachedThreshold}
-              removeClippedSubviews={false}
             />,
           )}
         </View>
